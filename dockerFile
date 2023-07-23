@@ -1,0 +1,13 @@
+FROM golang:alpine3.18
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY ./triqui-game-back/go.mod .
+# COPY ./triqui-game-back/go.sum .
+
+EXPOSE 8080
+
+RUN go mod download
+
+CMD ["go", "run", "main.go"]
